@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      netlifyIdentity.init();
+
+      netlifyIdentity.open("login");
+
+      netlifyIdentity.on("login", user => {
+        netlifyIdentity.close();
+        window.location.href = "/admin/";
+      });
+    </script>
+  </body>
+</html>
