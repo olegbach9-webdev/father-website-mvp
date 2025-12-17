@@ -1,5 +1,6 @@
 {
-  "title": "Professor Name",
-  "subtitle": "Researcher • University • City",
-  "about": "Editable text from GitHub via CMS."
+  "name": "Professor Name",
+  "title": "Scientist • University",
+  "about": "Short bio text here.",
+  "email": "name@university.edu"
 }
