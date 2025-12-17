@@ -7,13 +7,19 @@
   </head>
   <body>
     <h2>Account activation</h2>
+    <p>If you don’t see a login window, Identity is not enabled for this Netlify site.</p>
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
-      netlifyIdentity.on("init", () => {
-        netlifyIdentity.open();
-      });
+      // 1) Ініціалізуємо
       netlifyIdentity.init();
+
+      // 2) Відкриваємо модалку відразу + ще раз через 300мс (надійно)
+      netlifyIdentity.open();
+      setTimeout(() => netlifyIdentity.open(), 300);
+
+      // 3) Для дебага в консолі
+      console.log("Identity widget loaded:", !!window.netlifyIdentity);
     </script>
   </body>
 </html>
