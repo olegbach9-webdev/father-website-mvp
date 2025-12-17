@@ -1,45 +1,20 @@
 <!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Father Website MVP</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; }
-    header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    a { text-decoration: none; }
-    .card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 16px; margin-top: 16px; }
-    .muted { color: #6b7280; }
-    .btn { display: inline-block; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 12px; }
-  </style>
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Father site</title></head>
 <body>
-  <header>
-    <div>
-      <h1 id="title">Loading…</h1>
-      <div id="subtitle" class="muted"></div>
-    </div>
-    <a class="btn" href="/admin/">Admin</a>
-  </header>
-
-  <div class="card">
-    <h2>About</h2>
-    <p id="about">Loading…</p>
-  </div>
+  <h1 id="title">Loading…</h1>
+  <p id="subtitle"></p>
+  <p id="about"></p>
+  <p><a href="/admin/">Admin</a></p>
 
   <script>
-    async function main() {
-      const res = await fetch('/content/home.json', { cache: 'no-store' });
-      const data = await res.json();
-
-      document.getElementById('title').textContent = data.title;
-      document.getElementById('subtitle').textContent = data.subtitle;
-      document.getElementById('about').textContent = data.about;
-    }
-    main().catch(err => {
-      console.error(err);
-      document.getElementById('title').textContent = 'Failed to load content';
-    });
+    fetch('/content/home.json', { cache:'no-store' })
+      .then(r => r.json())
+      .then(d => {
+        title.textContent = d.title;
+        subtitle.textContent = d.subtitle;
+        about.textContent = d.about;
+      });
   </script>
 </body>
 </html>

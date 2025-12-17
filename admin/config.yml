@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: olegbach9-webdev/father-website-mvp   # <-- зміни на свій owner/repo
   branch: main
+  base_url: https://<YOUR_NETLIFY_SITE>.netlify.app
+  auth_endpoint: /api/auth
 
 media_folder: "uploads"
 public_folder: "/uploads"
