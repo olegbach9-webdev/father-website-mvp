@@ -1,33 +1,73 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Father Website</title>
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/research.html">Research</a> |
-    <a href="/publications.html">Publications</a>
-  </nav>
+  <div class="container">
+    <div class="nav">
+      <div class="brand pill">
+        <span>⚡</span>
+        <span id="brandName">Father Website</span>
+      </div>
 
-  <h1 id="name">Loading…</h1>
-  <h2 id="title"></h2>
-  <p id="about"></p>
-  <p>Email: <a id="email" href="#"></a></p>
+      <div class="links">
+        <a class="link" data-nav href="/">Home</a>
+        <a class="link" data-nav href="/research.html">Research</a>
+        <a class="link" data-nav href="/publications.html">Publications</a>
+        <button class="btn" id="themeBtn" title="Toggle theme">🌓</button>
+      </div>
+    </div>
 
-  <script>
-    fetch('/content/home.json', { cache: 'no-store' })
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById('name').textContent = d.name;
-        document.getElementById('title').textContent = d.title;
-        document.getElementById('about').textContent = d.about;
-        const a = document.getElementById('email');
-        a.textContent = d.email;
-        a.href = 'mailto:' + d.email;
-      });
+    <section class="hero fade-in">
+      <h1 class="h-title" id="name">Loading…</h1>
+      <p class="h-sub" id="subtitle"></p>
+      <div class="actions">
+        <a class="action" id="emailLink" href="#">✉️ Email</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card fade-in">
+        <h2>About</h2>
+        <p id="about">Loading…</p>
+      </section>
+
+      <aside class="card fade-in">
+        <h2>Quick info</h2>
+        <div class="kv" id="quick"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module">
+    import { loadJSON, initTheme, setActiveNav } from "/assets/app.js";
+
+    initTheme();
+    setActiveNav();
+
+    const home = await loadJSON("/content/home.json");
+    document.getElementById("name").textContent = home.name;
+    document.getElementById("subtitle").textContent = home.title;
+    document.getElementById("about").textContent = home.about;
+    document.getElementById("brandName").textContent = home.name;
+
+    const emailLink = document.getElementById("emailLink");
+    emailLink.textContent = "✉️ " + home.email;
+    emailLink.href = "mailto:" + home.email;
+
+    const quick = document.getElementById("quick");
+    const rows = [
+      ["Affiliation", home.affiliation || "—"],
+      ["City", home.city || "—"],
+      ["Interests", (home.interests || []).slice(0,3).join(", ") || "—"],
+    ];
+    quick.innerHTML = rows.map(([k,v]) => `
+      <div class="row"><span>${k}</span><b>${v}</b></div>
+    `).join("");
   </script>
 </body>
 </html>

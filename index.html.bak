@@ -1,19 +1,32 @@
 <!doctype html>
-<html lang="uk">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Father site</title></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Father Website</title>
+</head>
 <body>
-  <h1 id="title">Loading…</h1>
-  <p id="subtitle"></p>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/research.html">Research</a> |
+    <a href="/publications.html">Publications</a>
+  </nav>
+
+  <h1 id="name">Loading…</h1>
+  <h2 id="title"></h2>
   <p id="about"></p>
-  <p><a href="/admin/">Admin</a></p>
+  <p>Email: <a id="email" href="#"></a></p>
 
   <script>
-    fetch('/content/home.json', { cache:'no-store' })
+    fetch('/content/home.json', { cache: 'no-store' })
       .then(r => r.json())
       .then(d => {
-        title.textContent = d.title;
-        subtitle.textContent = d.subtitle;
-        about.textContent = d.about;
+        document.getElementById('name').textContent = d.name;
+        document.getElementById('title').textContent = d.title;
+        document.getElementById('about').textContent = d.about;
+        const a = document.getElementById('email');
+        a.textContent = d.email;
+        a.href = 'mailto:' + d.email;
       });
   </script>
 </body>

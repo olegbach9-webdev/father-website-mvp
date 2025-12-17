@@ -1,6 +1,9 @@
 {
   "name": "Professor Name",
-  "title": "Scientist • University",
-  "about": "Short bio text here.",
-  "email": "name@university.edu"
+  "title": "Scientist • University • City",
+  "about": "Short bio text here. This is editable via GitHub and auto-deploys on Netlify.",
+  "email": "name@university.edu",
+  "affiliation": "Department / University",
+  "city": "Kyiv",
+  "interests": ["PDEs", "Dynamical Systems", "Numerical Methods"]
 }
