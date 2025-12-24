@@ -3,5 +3,9 @@
   "intro": "Add members here (edit this file in GitHub).",
   "members": [
     { "name": "Member 1", "role": "Researcher", "area": "Topic/area" }
-  ]
+  ],
+  "name": "Member 1",
+  "role": "Researcher",
+  "area": "Atmospheric modeling",
+  "photo": "/assets/img/member-placeholder.jpg"
 }
