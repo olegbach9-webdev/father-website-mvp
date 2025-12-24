@@ -1,30 +1,29 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Research</title></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Research</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/research.html">Research</a> |
-    <a href="/publications.html">Publications</a>
-  </nav>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">Oleg Skrynyk</div>
+      <div class="links">
+        <a class="link" data-nav href="/">Home</a>
+        <a class="link" data-nav href="/research.html">Research</a>
+        <a class="link" data-nav href="/publications.html">Publications</a>
+        <a class="link" data-nav href="/team.html">Team</a>
+      </div>
+    </div>
 
-  <h1>Research</h1>
-  <p id="intro">Loading…</p>
-  <div id="areas"></div>
+    <section class="hero">
+      <h1>Research</h1>
+      <p class="sub">We’ll fill this from JSON next.</p>
+    </section>
+  </div>
 
-  <script>
-    fetch('/content/research.json', { cache: 'no-store' })
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById('intro').textContent = d.intro;
-        const container = document.getElementById('areas');
-        container.innerHTML = '';
-        d.areas.forEach(a => {
-          const block = document.createElement('section');
-          block.innerHTML = `<h2>${a.title}</h2><p>${a.text}</p>`;
-          container.appendChild(block);
-        });
-      });
-  </script>
+  <script src="/assets/app.js"></script>
 </body>
 </html>

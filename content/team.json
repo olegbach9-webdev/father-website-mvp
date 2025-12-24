@@ -1,16 +1,7 @@
 {
-  "title": { "en": "Team", "uk": "Команда" },
-  "intro": {
-    "en": "Add your research group members here.",
-    "uk": "Додайте учасників наукової команди тут."
-  },
-  "photo": "/assets/img/team-group.jpg",
+  "title": "Team",
+  "intro": "Add members here (edit this file in GitHub).",
   "members": [
-    {
-      "name": "Member 1",
-      "role": { "en": "PhD student", "uk": "Аспірант(ка)" },
-      "area": { "en": "Topic / area", "uk": "Тема / напрям" },
-      "photo": "/assets/img/team-group.jpg"
-    }
+    { "name": "Member 1", "role": "Researcher", "area": "Topic/area" }
   ]
 }

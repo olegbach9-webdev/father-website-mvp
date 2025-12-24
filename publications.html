@@ -1,32 +1,29 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Publications</title></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/research.html">Research</a> |
-    <a href="/publications.html">Publications</a>
-  </nav>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">Oleg Skrynyk</div>
+      <div class="links">
+        <a class="link" data-nav href="/">Home</a>
+        <a class="link" data-nav href="/research.html">Research</a>
+        <a class="link" data-nav href="/publications.html">Publications</a>
+        <a class="link" data-nav href="/team.html">Team</a>
+      </div>
+    </div>
 
-  <h1>Publications</h1>
-  <ul id="list"><li>Loading…</li></ul>
+    <section class="hero">
+      <h1>Publications</h1>
+      <p class="sub">We’ll fill this from JSON next.</p>
+    </section>
+  </div>
 
-  <script>
-    fetch('/content/publications.json', { cache: 'no-store' })
-      .then(r => r.json())
-      .then(d => {
-        const ul = document.getElementById('list');
-        ul.innerHTML = '';
-        d.items
-          .sort((a,b) => b.year - a.year)
-          .forEach(p => {
-            const li = document.createElement('li');
-            const pdf = p.pdf ? ` [<a href="${p.pdf}">PDF</a>]` : '';
-            const link = p.link ? ` [<a href="${p.link}" target="_blank" rel="noreferrer">Link</a>]` : '';
-            li.innerHTML = `<b>${p.year}</b> — ${p.authors}. <i>${p.title}</i>. ${p.where}.${pdf}${link}`;
-            ul.appendChild(li);
-          });
-      });
-  </script>
+  <script src="/assets/app.js"></script>
 </body>
 </html>
