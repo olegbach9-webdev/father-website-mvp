@@ -1,9 +1,20 @@
 {
-  "name": "Professor Name",
-  "title": "Scientist • University • City",
-  "about": "Short bio text here. This is editable via GitHub and auto-deploys on Netlify.",
-  "email": "name@university.edu",
-  "affiliation": "Department / University",
-  "city": "Kyiv",
-  "interests": ["PDEs", "Dynamical Systems", "Numerical Methods"]
+  "name": "Oleg Skrynyk",
+  "subtitle": {
+    "en": "Senior Scientist • Candidate of Physical and Mathematical Sciences (Geophysics)",
+    "uk": "Старший науковий співробітник • кандидат фізико-математичних наук (геофізика)"
+  },
+  "affiliation": {
+    "en": "Ukrainian Research Hydrometeorological Institute (NAS of Ukraine), Department of Atmosphere Physics",
+    "uk": "Український гідрометеорологічний інститут (НАН України), Відділ фізики атмосфери"
+  },
+  "about": {
+    "en": "Short bio (EN). Replace this text with a real bio. Add key topics, methods, and current projects.",
+    "uk": "Коротка біографія (UA). Замініть цей текст на реальну біографію: тематика, методи, поточні проєкти."
+  },
+  "email": "CHANGE_ME@example.com",
+  "photos": {
+    "portrait": "/assets/img/oleg-portrait.jpg",
+    "hero": "/assets/img/hero-lab.jpg"
+  }
 }

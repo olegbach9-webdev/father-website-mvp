@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Father Website</title>
+  <title>Oleg Skrynyk</title>
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
   <div class="container">
     <div class="nav">
-      <div class="brand pill">
-        <span>⚡</span>
-        <span id="brandName">Father Website</span>
-      </div>
+      <div class="brand pill"><span>⚡</span><span id="brandName">Loading…</span></div>
 
       <div class="links">
-        <a class="link" data-nav href="/">Home</a>
-        <a class="link" data-nav href="/research.html">Research</a>
-        <a class="link" data-nav href="/publications.html">Publications</a>
+        <a class="link" data-nav href="/" id="navHome"></a>
+        <a class="link" data-nav href="/research.html" id="navResearch"></a>
+        <a class="link" data-nav href="/publications.html" id="navPubs"></a>
+        <a class="link" data-nav href="/team.html" id="navTeam"></a>
         <button class="btn" id="themeBtn" title="Toggle theme">🌓</button>
+        <div class="lang">
+          <button class="btn" id="langEN" title="English">EN</button>
+          <button class="btn" id="langUA" title="Українська">UA</button>
+        </div>
       </div>
     </div>
 
@@ -26,48 +28,65 @@
       <h1 class="h-title" id="name">Loading…</h1>
       <p class="h-sub" id="subtitle"></p>
       <div class="actions">
-        <a class="action" id="emailLink" href="#">✉️ Email</a>
+        <a class="action" id="emailLink" href="#">✉️</a>
+      </div>
+
+      <div class="heroMedia">
+        <div class="mediaCard">
+          <img id="imgPortrait" src="/assets/img/oleg-portrait.jpg" alt="Oleg portrait (replace)" />
+          <div class="cap">PHOTO: <b>oleg-portrait.jpg</b> (портрет)</div>
+        </div>
+        <div class="mediaCard">
+          <img id="imgHero" src="/assets/img/hero-lab.jpg" alt="Hero image (replace)" />
+          <div class="cap">PHOTO: <b>hero-lab.jpg</b> (лабораторія/атмосфера/графіки)</div>
+        </div>
       </div>
     </section>
 
     <div class="grid">
       <section class="card fade-in">
-        <h2>About</h2>
+        <h2 id="hAbout"></h2>
         <p id="about">Loading…</p>
       </section>
 
       <aside class="card fade-in">
-        <h2>Quick info</h2>
+        <h2 id="hQuick"></h2>
         <div class="kv" id="quick"></div>
       </aside>
     </div>
   </div>
 
   <script type="module">
-    import { loadJSON, initTheme, setActiveNav } from "/assets/app.js";
+    import { loadJSON, initTheme, setActiveNav, initLangUI, t, labels } from "/assets/app.js";
 
-    initTheme();
-    setActiveNav();
+    initTheme(); setActiveNav(); initLangUI();
+    const L = labels();
+
+    navHome.textContent = t(L.home);
+    navResearch.textContent = t(L.research);
+    navPubs.textContent = t(L.publications);
+    navTeam.textContent = t(L.team);
+    hAbout.textContent = t(L.about);
+    hQuick.textContent = t(L.quick);
 
     const home = await loadJSON("/content/home.json");
-    document.getElementById("name").textContent = home.name;
-    document.getElementById("subtitle").textContent = home.title;
-    document.getElementById("about").textContent = home.about;
-    document.getElementById("brandName").textContent = home.name;
 
-    const emailLink = document.getElementById("emailLink");
-    emailLink.textContent = "✉️ " + home.email;
-    emailLink.href = "mailto:" + home.email;
+    brandName.textContent = home.name;
+    name.textContent = home.name;
+    subtitle.textContent = t(home.subtitle);
+    about.textContent = t(home.about);
 
-    const quick = document.getElementById("quick");
+    imgPortrait.src = home.photos?.portrait || "/assets/img/oleg-portrait.jpg";
+    imgHero.src = home.photos?.hero || "/assets/img/hero-lab.jpg";
+
+    emailLink.textContent = "✉️ " + (home.email || "Email");
+    emailLink.href = "mailto:" + (home.email || "");
+
     const rows = [
-      ["Affiliation", home.affiliation || "—"],
-      ["City", home.city || "—"],
-      ["Interests", (home.interests || []).slice(0,3).join(", ") || "—"],
+      ["Affiliation", t(home.affiliation)],
+      ["NAS page", "old.nas.gov.ua personal site"],
     ];
-    quick.innerHTML = rows.map(([k,v]) => `
-      <div class="row"><span>${k}</span><b>${v}</b></div>
-    `).join("");
+    quick.innerHTML = rows.map(([k,v]) => `<div class="row"><span>${k}</span><b>${v || "—"}</b></div>`).join("");
   </script>
 </body>
 </html>
