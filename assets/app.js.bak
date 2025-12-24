@@ -1,76 +1,67 @@
-export async function loadJSON(path){
-  const r = await fetch(path, { cache: "no-store" });
-  if(!r.ok) throw new Error(`Failed to load ${path}`);
-  return r.json();
+function setActiveNav(){
+  var p = location.pathname.replace(/\/+$/, "");
+  if(p === "") p = "/";
+
+  var links = document.querySelectorAll("[data-nav]");
+  for(var i=0;i<links.length;i++){
+    var href = (links[i].getAttribute("href") || "").replace(/\/+$/, "") || "/";
+    if(href === p) links[i].classList.add("active");
+  }
 }
 
-const LS_LANG = "fw_lang";
-const DEFAULT_LANG = "en"; // можеш поставити "uk"
-
-export function getLang(){
-  return localStorage.getItem(LS_LANG) || DEFAULT_LANG;
+function loadJSON(path, cb){
+  fetch(path, { cache: "no-store" })
+    .then(function(r){ return r.json(); })
+    .then(function(d){ cb(null, d); })
+    .catch(function(e){ cb(e); });
 }
 
-export function setLang(lang){
-  localStorage.setItem(LS_LANG, lang);
-  // найпростіше: перезавантажуємо сторінку, щоб усе перемалювалось
-  location.reload();
-}
+function byId(id){ return document.getElementById(id); }
 
-export function initLangUI(){
-  const lang = getLang();
-  const btnEN = document.getElementById("langEN");
-  const btnUA = document.getElementById("langUA");
+// Home page renderer
+function renderHome(){
+  loadJSON("/content/home.json", function(err, home){
+    if(err) return;
 
-  if(btnEN) btnEN.classList.toggle("active", lang === "en");
-  if(btnUA) btnUA.classList.toggle("active", lang === "uk");
+    if(byId("name")) byId("name").textContent = home.name || "Oleg Skrynyk";
+    if(byId("subtitle")) byId("subtitle").textContent = home.subtitle || "";
+    if(byId("about")) byId("about").textContent = home.about || "";
 
-  btnEN?.addEventListener("click", () => setLang("en"));
-  btnUA?.addEventListener("click", () => setLang("uk"));
-}
+    if(byId("email")) {
+      byId("email").textContent = home.email || "";
+      byId("email").href = home.email ? ("mailto:" + home.email) : "#";
+    }
 
-export function t(obj){
-  // obj може бути {en:"...", uk:"..."} або простий рядок
-  if(typeof obj === "string") return obj;
-  const lang = getLang();
-  return obj?.[lang] ?? obj?.en ?? obj?.uk ?? "";
-}
-
-export function setActiveNav(){
-  const p = (location.pathname.replace(/\/+$/, "") || "/");
-  document.querySelectorAll("[data-nav]").forEach(a => {
-    const href = (a.getAttribute("href") || "").replace(/\/+$/, "") || "/";
-    a.classList.toggle("active", href === p);
+    if(byId("affiliation")) byId("affiliation").textContent = home.affiliation || "—";
+    if(byId("city")) byId("city").textContent = home.city || "—";
   });
 }
 
-export function initTheme(){
-  const key = "fw_theme";
-  const saved = localStorage.getItem(key);
-  if(saved) document.documentElement.setAttribute("data-theme", saved);
+// Team page renderer
+function renderTeam(){
+  loadJSON("/content/team.json", function(err, team){
+    if(err) return;
 
-  const btn = document.getElementById("themeBtn");
-  if(!btn) return;
+    if(byId("teamTitle")) byId("teamTitle").textContent = team.title || "Team";
+    if(byId("teamIntro")) byId("teamIntro").textContent = team.intro || "";
 
-  btn.addEventListener("click", () => {
-    const cur = document.documentElement.getAttribute("data-theme") || "dark";
-    const next = cur === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem(key, next);
+    var list = byId("teamList");
+    if(!list) return;
+    list.innerHTML = "";
+
+    (team.members || []).forEach(function(m){
+      var div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML =
+        "<b>" + (m.name || "Member") + "</b>" +
+        "<div class='meta'>" + (m.role || "") + (m.area ? (" • " + m.area) : "") + "</div>";
+      list.appendChild(div);
+    });
   });
 }
 
-export function labels(){
-  // захардкоджені лейбли UI
-  return {
-    home: { en: "Home", uk: "Головна" },
-    research: { en: "Research", uk: "Дослідження" },
-    publications: { en: "Publications", uk: "Публікації" },
-    team: { en: "Team", uk: "Команда" },
-    about: { en: "About", uk: "Про" },
-    quick: { en: "Quick info", uk: "Коротко" },
-    email: { en: "Email", uk: "Пошта" },
-    pdf: { en: "PDF", uk: "PDF" },
-    link: { en: "Link", uk: "Посилання" },
-  };
-}
+document.addEventListener("DOMContentLoaded", function(){
+  setActiveNav();
+  if(document.body.getAttribute("data-page") === "home") renderHome();
+  if(document.body.getAttribute("data-page") === "team") renderTeam();
+});

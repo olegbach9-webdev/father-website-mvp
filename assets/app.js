@@ -53,8 +53,17 @@ function renderTeam(){
       var div = document.createElement("div");
       div.className = "item";
       div.innerHTML =
-        "<b>" + (m.name || "Member") + "</b>" +
-        "<div class='meta'>" + (m.role || "") + (m.area ? (" • " + m.area) : "") + "</div>";
+		  "<div style='display:flex; gap:12px; align-items:center;'>" +
+			"<img src='" + (m.photo || "/assets/img/member-placeholder.jpg") + "' " +
+			"style='width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--stroke);' />" +
+			"<div>" +
+			  "<b>" + (m.name || "Member") + "</b>" +
+			  "<div class='meta'>" +
+				(m.role || "") + (m.area ? (" • " + m.area) : "") +
+			  "</div>" +
+			"</div>" +
+		  "</div>";
+
       list.appendChild(div);
     });
   });
