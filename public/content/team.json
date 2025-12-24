@@ -1,0 +1,8 @@
+{
+  "title": "Team",
+  "intro": "Research group members.",
+  "photo": "/img/team-group.jpg",
+  "members": [
+    { "name": "Member 1", "role": "Researcher", "area": "Topic" }
+  ]
+}

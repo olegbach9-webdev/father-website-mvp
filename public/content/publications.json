@@ -1,9 +1,11 @@
 {
+  "title": "Publications",
+  "intro": "Selected papers.",
   "items": [
     {
       "year": 2024,
       "title": "Paper title",
-      "authors": "A. Author, B. Author",
+      "authors": "A. Author, O. Skrynyk",
       "where": "Journal / arXiv",
       "pdf": "/uploads/paper-2024.pdf",
       "link": "https://example.com"

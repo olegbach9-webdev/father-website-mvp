@@ -1,96 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Oleg Skrynyk</title>
-  <link rel="stylesheet" href="/assets/style.css" />
-</head>
-<body data-page="home">
-  <div class="container">
-    <div class="nav">
-      <div class="brand">Oleg Skrynyk</div>
-      <div class="links">
-        <a class="link" data-nav href="/">Home</a>
-        <a class="link" data-nav href="/research.html">Research</a>
-        <a class="link" data-nav href="/publications.html">Publications</a>
-        <a class="link" data-nav href="/team.html">Team</a>
-      </div>
-    </div>
-
-   <section class="hero">
-	  <div style="display:grid; grid-template-columns: 1fr 280px; gap:16px;">
-		<div>
-		  <h1 id="name">Loading…</h1>
-		  <p class="sub" id="subtitle"></p>
-		  <p class="sub"><a id="email" href="#"></a></p>
-		</div>
-
-		<!-- PORTRAIT PHOTO -->
-		<img
-		  src="/assets/img/oleg-portrait.jpg"
-		  alt="Oleg Skrynyk portrait"
-		  style="
-			width:100%;
-			max-width:280px;
-			border-radius:14px;
-			border:1px solid var(--stroke);
-			object-fit:cover;
-		  "
-		/>
-	  </div>
-	</section>
-
-
-    <!-- PORTRAIT PHOTO -->
-    <img
-      src="/assets/img/oleg-portrait.jpg"
-      alt="Oleg Skrynyk portrait"
-      style="
-        width:100%;
-        max-width:280px;
-        border-radius:14px;
-        border:1px solid var(--stroke);
-        object-fit:cover;
-      "
-    />
-  </div>
-</section>
-<!-- HERO / RESEARCH IMAGE -->
-<section class="card" style="margin-top:14px;">
-  <img
-    src="/assets/img/hero-research.jpg"
-    alt="Research / atmosphere visualization"
-    style="
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      border-radius:12px;
-      border:1px solid var(--stroke);
-    "
-  />
-  <p class="sub" style="margin-top:8px;">
-    Research activity and atmospheric studies
-  </p>
-</section>
-
-
-    <div class="grid">
-      <section class="card">
-        <h2>About</h2>
-        <p id="about">Loading…</p>
-      </section>
-
-      <aside class="card">
-        <h2>Quick info</h2>
-        <div class="kv">
-          <div class="row"><span>Affiliation</span><b id="affiliation">—</b></div>
-          <div class="row"><span>City</span><b id="city">—</b></div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <script src="/assets/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>father-website-mvp</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
