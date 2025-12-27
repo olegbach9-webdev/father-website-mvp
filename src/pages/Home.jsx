@@ -4,7 +4,7 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/content/home.json", { cache: "no-store" })
+    fetch("content/home.json", { cache: "no-store" })
       .then(r => r.json())
       .then(setData)
       .catch(() => setData({}));
