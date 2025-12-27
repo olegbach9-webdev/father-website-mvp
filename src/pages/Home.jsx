@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
+console.log(`${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`);
+
+
 export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("content/home.json", { cache: "no-store" })
+    fetch(`${import.meta.env.BASE_URL}/content/home.json`, { cache: "no-store" })
       .then(r => r.json())
       .then(setData)
       .catch(() => setData({}));
@@ -28,7 +31,7 @@ export default function Home() {
 
           <img
             className="portrait"
-            src={data.photos?.portrait || "/img/oleg-portrait.jpg"}
+            src={data.photos?.portrait || `${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`}
             alt="Portrait"
           />
         </div>

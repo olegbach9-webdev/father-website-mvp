@@ -4,7 +4,7 @@ export default function Publications() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/content/publications.json", { cache: "no-store" })
+    fetch(`${import.meta.env.BASE_URL}/content/publications.json`, { cache: "no-store" })
       .then(r => r.json())
       .then(setData)
       .catch(() => setData({ items: [] }));

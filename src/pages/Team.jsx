@@ -4,7 +4,7 @@ export default function Team() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/content/team.json", { cache: "no-store" })
+    fetch(`${import.meta.env.BASE_URL}/content/team.json`, { cache: "no-store" })
       .then(r => r.json())
       .then(setData)
       .catch(() => setData({ members: [] }));
