@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 
 console.log(`${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`);
 
+import olegPortrait from "./../../public/img/oleg-portrait.jpg"
+import heroResearch from "./../../public/img/hero-research.jpg"
+
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -31,7 +34,8 @@ export default function Home() {
 
           <img
             className="portrait"
-            src={data.photos?.portrait || `${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`}
+            // src={data.photos?.portrait || `${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`}
+            src={olegPortrait}
             alt="Portrait"
           />
         </div>
@@ -40,7 +44,8 @@ export default function Home() {
       <section className="card" style={{ marginTop: 14 }}>
         <img
           className="heroImg"
-          src={data.photos?.hero || "/img/hero-research.jpg"}
+          // src={data.photos?.hero || "/img/hero-research.jpg"}
+          src={heroResearch}
           alt="Research"
         />
         <p className="sub" style={{ marginTop: 8 }}>

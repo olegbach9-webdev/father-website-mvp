@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import teamGroup from "./../../public/img/team-group.jpg"
+
 export default function Team() {
   const [data, setData] = useState(null);
 
@@ -20,7 +22,12 @@ export default function Team() {
       </section>
 
       <section className="card" style={{ marginTop: 14 }}>
-        <img className="heroImg" src={data.photo || "/img/team-group.jpg"} alt="Team" />
+        <img 
+          className="heroImg" 
+          // src={data.photo || "/img/team-group.jpg"}
+          src={teamGroup} 
+          alt="Team" 
+        />
       </section>
 
       <section className="card" style={{ marginTop: 14 }}>
