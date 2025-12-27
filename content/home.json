@@ -1,0 +1,13 @@
+{
+  "name": "Oleg Skrynyk",
+  "subtitle": "Senior Scientist • Candidate of Physical and Mathematical Sciences (Geophysics)",
+  "email": "CHANGE_ME@example.com",
+  "affiliation": "Ukrainian Research Hydrometeorological Institute (NAS of Ukraine), Department of Atmosphere Physics",
+  "city": "Kyiv",
+  "about": "Replace this with a short bio.",
+  "heroCaption": "Research activity and atmospheric studies",
+  "photos": {
+    "portrait": "/img/oleg-portrait.jpg",
+    "hero": "/img/hero-research.jpg"
+  }
+}
