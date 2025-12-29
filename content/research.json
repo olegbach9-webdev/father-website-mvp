@@ -1,0 +1,24 @@
+{
+  "title": "Scientific Research",
+  "intro": "Investigation of climatology, atmospheric physics, and long-term climate variability in the Carpathian region.",
+  "areas": [
+    {
+      "title": "Climate Change & Variability",
+      "text": "Analysis of historical temperature and precipitation trends using homogenized datasets."
+    },
+    {
+      "title": "Atmospheric Physics",
+      "text": "Modeling of local atmospheric processes and their interaction with complex topography."
+    },
+    {
+      "title": "Data Rescue",
+      "text": "Digitization and quality control of historical meteorological observations from the 19th and 20th centuries."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Carpathian Climate Project",
+      "description": "Cross-border cooperation for high-resolution climate monitoring."
+    }
+  ]
+}
