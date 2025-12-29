@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-
-console.log(`${import.meta.env.BASE_URL}/img/oleg-portrait.jpg`);
+import { useOutletContext } from "react-router-dom";
 
 import olegPortrait from "./../../public/img/oleg-portrait.jpg"
 import heroResearch from "./../../public/img/hero-research.jpg"
 
 
 export default function Home() {
+  const [lang] = useOutletContext();
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}/content/home.json`, { cache: "no-store" })
+    const fileName = lang === "en" ? "home.json" : "home_ua.json";
+    const url = `${import.meta.env.BASE_URL}/content/${fileName}`; 
+
+    fetch(url, { cache: "no-store" })
       .then(r => r.json())
       .then(setData)
       .catch(() => setData({}));
-  }, []);
+  }, [lang]);
 
   if (!data) return <div className="card">Loading…</div>;
+  
 
   return (
     <>

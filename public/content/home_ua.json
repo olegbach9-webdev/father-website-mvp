@@ -1,0 +1,13 @@
+{
+  "name": "Олег Скриник",
+  "subtitle": "Науковець",
+  "email": "CHANGE_ME@example.com",
+  "affiliation": "УКРГМІ",
+  "city": "Київ",
+  "about": "Біографія",
+  "heroCaption": "Досліднецька діяльність",
+  "photos": {
+    "portrait": "/img/oleg-portrait.jpg",
+    "hero": "/img/hero-research.jpg"
+  }
+}
