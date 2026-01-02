@@ -24,11 +24,47 @@ function Nav({ lang, setLang }) {
   );
 }
 
+function Footer({ lang }) {
+  return (
+    <footer className="footer">
+      <div className="container footer-container">
+        <div className="footer-grid">
+          {/* Ліва колонка: Контакти */}
+          <div className="footer-col">
+            <h4>{lang === "en" ? "Contact Information" : "Контактна інформація"}</h4>
+            <p><strong>Email:</strong> <a href="mailto:skrynyk@gmail.com">skrynyk@gmail.com</a></p>
+            <p><strong>{lang === "en" ? "Location:" : "Локація:"}</strong> {lang === "en" ? "Kyiv, Ukraine" : "Київ, Україна"}</p>
+            <p>{lang === "en" ? "Ukrainian Hydrometeorological Institute" : "Український гідрометеорологічний інститут"}</p>
+          </div>
+          
+          {/* Права колонка: Посилання списком */}
+          <div className="footer-col">
+            <h4>{lang === "en" ? "Academic Profiles" : "Академічні профілі"}</h4>
+            <ul className="footer-ul">
+              <li><a href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a></li>
+              <li><a href="https://www.researchgate.net/" target="_blank" rel="noreferrer">ResearchGate</a></li>
+              <li><a href="https://uhmi.org.ua/" target="_blank" rel="noreferrer">{lang === "en" ? "UHMI Official Website" : "Офіційний сайт УГМІ"}</a></li>
+              <li><a href="https://orcid.org/" target="_blank" rel="noreferrer">ORCID Profile</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Oleg Skrynyk — {lang === "en" ? "Academic Website" : "Академічний вебсайт"}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export default function Layout({ lang, setLang }) {
   return (
     <div className="container">
       <Nav lang={lang} setLang={setLang} />
-      <Outlet context={[lang]} />
+      <main>
+        <Outlet context={[lang]} />
+      </main>
+      <Footer lang={lang} />
     </div>
   );
 }

@@ -1,8 +1,24 @@
 {
-  "title": "Team",
-  "intro": "Research group members.",
-  "photo": "/img/team-group.jpg",
+  "title": "Our Team",
+  "intro": "A group of scientists and specialists focused on climatological research, numerical modeling, and meteorological data rescue at the Ukrainian Hydrometeorological Institute.",
   "members": [
-    { "name": "Member 1", "role": "Researcher", "area": "Topic" }
+    {
+      "name": "Oleg Skrynyk",
+      "role": "Senior Researcher",
+      "degree": "Ph.D.",
+      "area": "Climatology and Data Homogenization"
+    },
+    {
+      "name": "Dmytro Oshurok",
+      "role": "Lead Specialist",
+      "degree": "Ph.D.",
+      "area": "Numerical Weather Prediction & Modeling"
+    },
+    {
+      "name": "Vlad Sidenko",
+      "role": "Researcher",
+      "degree": "",
+      "area": "Meteorological Data Rescue & Processing"
+    }
   ]
 }
