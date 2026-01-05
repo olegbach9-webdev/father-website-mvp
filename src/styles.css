@@ -257,3 +257,43 @@ h1 {
     gap: 30px;
   }
 }
+
+.member-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: ui-monospace, monospace; /* Щоб пасувало до нашого стилю мета-даних */
+  border-bottom: 1px solid transparent;
+}
+
+.member-links a:hover {
+  border-bottom: 1px solid var(--accent);
+}
+
+/* На мобільних пристроях краще вирівняти в стовпчик */
+@media (max-width: 600px) {
+  .team-member {
+    flex-direction: column;
+    gap: 12px !important;
+  }
+  .team-member img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+.member-contact a {
+  font-family: ui-monospace, monospace;
+  transition: color 0.2s;
+}
+
+.member-contact a:hover {
+  color: var(--accent) !important;
+}
+
+/* Додамо розділювач, якщо пошта і лінки занадто близько на мобілках */
+@media (max-width: 600px) {
+  .member-footer {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+}
