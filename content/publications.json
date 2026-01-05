@@ -1,14 +1,20 @@
 {
-  "title": "Publications",
-  "intro": "Selected papers.",
   "items": [
     {
       "year": 2024,
-      "title": "Paper title",
-      "authors": "A. Author, O. Skrynyk",
-      "where": "Journal / arXiv",
-      "pdf": "/uploads/paper-2024.pdf",
-      "link": "https://example.com"
+      "title": "Historical climate data rescue in Ukraine: methods and results",
+      "authors": "O. Skrynyk, D. Oshurok, V. Sidenko",
+      "where": "International Journal of Climatology",
+      "pdf": "uploads/paper-2024.pdf",
+      "link": "https://doi.org/10.1002/joc.xxxx"
+    },
+    {
+      "year": 2023,
+      "title": "Homogenization of long-term temperature series in the Carpathian region",
+      "authors": "O. Skrynyk, et al.",
+      "where": "Meteorological Applications",
+      "pdf": "uploads/paper-2023.pdf",
+      "link": "https://example.com/article"
     }
   ]
 }
