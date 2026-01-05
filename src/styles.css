@@ -297,3 +297,26 @@ h1 {
     align-items: flex-start !important;
   }
 }
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-family: var(--font-main); /* Наш Serif шрифт */
+  font-size: 1rem;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
