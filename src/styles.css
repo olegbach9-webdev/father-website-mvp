@@ -320,3 +320,77 @@ h1 {
   color: #94a3b8;
   font-style: italic;
 }
+
+/* --- MOBILE VIEW --- */
+
+@media (max-width: 650px) {
+  /* Зменшуємо відступи контейнера для мобілок */
+  .container {
+    padding: 10px 12px 0;
+  }
+
+  /* Навігація стає вертикальною або компактнішою */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .links {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .link {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .lang-btn {
+    margin-left: 0;
+    margin-top: 4px;
+  }
+
+  /* Hero секція: зменшуємо внутрішні відступи та текст */
+  .hero {
+    padding: 20px 16px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Картки та контент */
+  .card {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  /* Робимо зображення (наприклад, портрет) на всю ширину на мобілці */
+  .portrait {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Таблиці Key-Value (наприклад, в афіліації) */
+  .kv .row {
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 8px;
+  }
+
+  .kv b {
+    font-size: 0.9rem;
+  }
+
+  /* Список статей та публікацій */
+  .item b {
+    font-size: 1rem;
+  }
+}
