@@ -1,21 +1,41 @@
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 function Nav({ lang, setLang }) {
+  const [isOpen, setIsOpen] = useState(false); // Стан для гамбургера
   const link = ({ isActive }) => "link" + (isActive ? " active" : "");
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <div className="nav">
-      <div className="brand">{lang === "en" ? "Oleg Skrynyk" : "Олег Скриник"}</div>
-      <div className="links">
-        <NavLink to="/" end className={link}>{lang === "en" ? "Home" : "Головна"}</NavLink>
-        <NavLink to="/research" className={link}>{lang === "en" ? "Research" : "Дослідження"}</NavLink>
-        <NavLink to="/publications" className={link}>{lang === "en" ? "Publications" : "Публікації"}</NavLink>
-        <NavLink to="/team" className={link}>{lang === "en" ? "Team" : "Група-Команда"}</NavLink>
+      <div className="nav-header">
+        <div className="brand">{lang === "en" ? "Oleg Skrynyk" : "Олег Скриник"}</div>
+        
+        {/* Кнопка Гамбургера */}
+        <button className="hamburger" onClick={toggleMenu}>
+          {isOpen ? "✕" : "☰"}
+        </button>
+      </div>
+
+      <div className={`links ${isOpen ? "open" : ""}`}>
+        <NavLink to="/" end className={link} onClick={closeMenu}>
+          {lang === "en" ? "Home" : "Головна"}
+        </NavLink>
+        <NavLink to="/research" className={link} onClick={closeMenu}>
+          {lang === "en" ? "Research" : "Дослідження"}
+        </NavLink>
+        <NavLink to="/publications" className={link} onClick={closeMenu}>
+          {lang === "en" ? "Publications" : "Публікації"}
+        </NavLink>
+        <NavLink to="/team" className={link} onClick={closeMenu}>
+          {lang === "en" ? "Team" : "Команда"}
+        </NavLink>
 
         <button
           className="lang-btn"
-          onClick={() => setLang(lang === "en" ? "ua" : "en")}
-          title={lang === "en" ? "Змінити на українську" : "Switch to English"}
+          onClick={() => { setLang(lang === "en" ? "ua" : "en"); closeMenu(); }}
         >
           {lang === "en" ? "UA" : "EN"}
         </button>
@@ -28,29 +48,22 @@ function Footer({ lang }) {
   return (
     <footer className="footer">
       <div className="container footer-container">
-        <div className="footer-grid">
-          {/* Ліва колонка: Контакти */}
+        <div className="footer-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
           <div className="footer-col">
-            <h4>{lang === "en" ? "Contact Information" : "Контактна інформація"}</h4>
-            <p><strong>Email:</strong> <a href="mailto:skrynyk@gmail.com">skrynyk@gmail.com</a></p>
-            <p><strong>{lang === "en" ? "Location:" : "Локація:"}</strong> {lang === "en" ? "Kyiv, Ukraine" : "Київ, Україна"}</p>
-            <p>{lang === "en" ? "Ukrainian Hydrometeorological Institute" : "Український гідрометеорологічний інститут"}</p>
+            <h4>{lang === "en" ? "Contact" : "Контакти"}</h4>
+            <p><strong>Oleg Skrynyk:</strong> <a href="mailto:skrynyk@gmail.com">skrynyk@gmail.com</a></p>
+            {/* Тут можна додати інші пошти, якщо будуть */}
           </div>
           
-          {/* Права колонка: Посилання списком */}
-          <div className="footer-col">
-            <h4>{lang === "en" ? "Academic Profiles" : "Академічні профілі"}</h4>
-            <ul className="footer-ul">
-              <li><a href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a></li>
-              <li><a href="https://www.researchgate.net/" target="_blank" rel="noreferrer">ResearchGate</a></li>
-              <li><a href="https://uhmi.org.ua/" target="_blank" rel="noreferrer">{lang === "en" ? "UHMI Official Website" : "Офіційний сайт УГМІ"}</a></li>
-              <li><a href="https://orcid.org/" target="_blank" rel="noreferrer">ORCID Profile</a></li>
-            </ul>
+          <div className="footer-col" style={{ textAlign: 'right' }}>
+            <h4>{lang === "en" ? "Location" : "Локація"}</h4>
+            <p>{lang === "en" ? "Ukrainian Hydrometeorological Institute" : "Український гідрометеорологічний інститут"}</p>
+            <p>{lang === "en" ? "Kyiv, Ukraine" : "Київ, Україна"}</p>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Oleg Skrynyk — {lang === "en" ? "Academic Website" : "Академічний вебсайт"}</p>
+          <p>© {new Date().getFullYear()} Oleg Skrynyk - Academic website</p>
         </div>
       </div>
     </footer>
