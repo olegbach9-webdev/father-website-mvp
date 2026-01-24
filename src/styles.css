@@ -29,41 +29,53 @@ a:hover { opacity: 0.8; text-decoration: underline; }
 
 /* --- 2. NAVIGATION --- */
 .nav {
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; /* Це розштовхає ім'я вліво, а меню вправо */
+  /* Прибираємо flex звідси, щоб він не заважав мобільному меню */
+  display: block; 
   padding: 12px 0;
   border-bottom: 2px solid var(--text);
   margin-bottom: 30px;
-  width: 100%; /* Гарантуємо повну ширину всередині контейнера */
+  width: 100%;
 }
 
 .nav-header {
   display: flex;
   align-items: center;
-  /* На десктопі кнопка гамбургера прихована, тому brand залишиться зліва */
+  justify-content: space-between; /* Ім'я зліва, гамбургер справа */
+  width: 100%;
 }
 
 .brand { 
   font-weight: 700; 
   font-size: 1.25rem; 
   font-style: italic;
+  white-space: nowrap;
 }
 
 .hamburger {
-  display: none;
+  display: none; /* Покажемо лише в медіа-запиті */
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   color: var(--text);
+  padding: 0;
+  line-height: 1;
 }
 
 .links { 
   display: flex; 
   gap: 4px; 
   align-items: center;
-  justify-content: flex-end; /* Меню буде прикуте до правого боку */
+  /* Плавність для всіх переходів */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+/* На десктопі links мають бути справа від brand */
+@media (min-width: 861px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .link {
@@ -128,6 +140,14 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height
   background: var(--card);
   border-radius: var(--radius);
   padding: 24px;
+  /* Додаємо плавний перехід для трансформації */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px); /* Картка "підстрибує" вгору */
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
 }
 
 .card h2 { 
@@ -138,6 +158,31 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height
   padding-left: 12px;
 }
 
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-main); /* Повертаємо Serif */
+  font-size: 1.05rem;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  background-color: #fcfdfe;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* --- 4. LISTS & ITEMS --- */
 .item {
   border-bottom: 1px solid var(--stroke);
@@ -146,6 +191,11 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height
 .item:last-child { border-bottom: none; }
 .item b { font-size: 1.1rem; display: block; }
 .meta { color: var(--muted); font-size: 0.9rem; margin-top: 8px; font-family: var(--font-mono); }
+.item:hover {
+  padding-left: 8px;
+  border-left: 2px solid var(--accent);
+  background: rgba(37, 99, 235, 0.02);
+}
 
 .kv .row { 
   display: flex; justify-content: space-between; 
@@ -198,25 +248,57 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height
 @media (max-width: 860px) {
   .grid, .heroGrid { grid-template-columns: 1fr !important; }
   .portrait { max-width: 280px; margin: 0 auto; order: -1; }
-  .nav-header { width: 100%; }
-  .hamburger { display: block; }
+
+  .hamburger { 
+    display: block; 
+  }
+
   .links {
-    display: none;
+    /* Замість display: none використовуємо приховання висоти */
+    display: flex; 
     flex-direction: column;
     width: 100%;
-    padding: 20px 0;
-    gap: 15px;
-    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    
+    overflow: hidden;    /* Ховаємо вміст, що вилазить */
+    max-height: 0;       /* Початкова висота — нуль */
+    opacity: 0;          /* Повністю прозоре */
+    padding: 0;          /* Прибираємо падінги, щоб не було видно порожнього блоку */
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .links.open { display: flex; }
-  .link { width: 100%; text-align: center; padding: 12px; }
+
+  .links.open { 
+    /* display: flex тут вже не потрібен, бо він є вище */
+    max-height: 500px;   /* Достатня висота, щоб вмістити всі лінки */
+    opacity: 1;          /* Робимо видимим */
+    padding: 20px 0;     /* Повертаємо відступи */
+    border-top: 1px solid var(--stroke);
+    margin-top: 12px;
+  }
+
+  .link { 
+    width: 100%; 
+    text-align: center; 
+    padding: 14px; 
+    font-size: 1.1rem;
+  }
+
+  /* Прибираємо підкреслення на мобільці, щоб не виглядало брудно */
+  .link.active {
+    text-decoration: none;
+    background: #f1f5f9;
+    font-weight: 800;
+  }
+
   .lang-btn {
-    margin: 10px 0 0;
-    width: auto; /* ПРИБИРАЄМО 100% */
-    min-width: 60px; /* Задаємо невелику фіксовану ширину */
-    padding: 8px 15px;
-    align-self: center; /* Центруємо кнопку в колонці */
+    margin: 15px auto 0;
+    width: 80px;
+    display: block;
+    text-align: center;
   }
+
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
 }
 

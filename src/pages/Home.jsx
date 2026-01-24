@@ -78,10 +78,10 @@ export default function Home() {
       <section className="card" style={{ marginTop: 14 }}>
         <h2>{lang === "en" ? "Scientific Profiles" : "Наукові профілі"}</h2>
         <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '15px' }}>
-          <a href="https://scholar.google.com/" target="_blank" rel="noreferrer" className="link-box">Google Scholar</a>
-          <a href="https://www.researchgate.net/" target="_blank" rel="noreferrer" className="link-box">ResearchGate</a>
-          <a href="https://orcid.org/" target="_blank" rel="noreferrer" className="link-box">ORCID</a>
-          <a href="https://www.scopus.com/" target="_blank" rel="noreferrer" className="link-box">Scopus</a>
+          <a href="https://scholar.google.com/citations?user=8uf7DeAAAAAJ&hl=uk" target="_blank" rel="noreferrer" className="link-box">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Oleg-Skrynyk" target="_blank" rel="noreferrer" className="link-box">ResearchGate</a>
+          <a href="https://orcid.org/0000-0001-8827-0280" target="_blank" rel="noreferrer" className="link-box">ORCID</a>
+          <a href="https://ua.h-index.com/uk/author/56196886900" target="_blank" rel="noreferrer" className="link-box">Scopus</a>
         </div>
       </section>
     </>

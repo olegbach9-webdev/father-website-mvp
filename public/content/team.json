@@ -3,6 +3,18 @@
   "intro": "A group of scientists and specialists focused on climatological research, numerical modeling, and meteorological data rescue at the Ukrainian Hydrometeorological Institute.",
   "members": [
     {
+      "name": "Olesya Skrynyk",
+      "role": "Lead Specialist",
+      "degree": "Ph.D.",
+      "area": "Numerical Weather Prediction & Modeling",
+      "photo": "img/olesya-skrynyk.jpg",
+      "email": "oshurok@example.com",
+      "links": {
+        "scholar": "https://scholar.google.com/...",
+        "researchgate": "https://www.researchgate.net/..."
+      }
+    },
+    {
       "name": "Dmytro Oshurok",
       "role": "Lead Specialist",
       "degree": "Ph.D.",
