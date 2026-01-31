@@ -45,8 +45,8 @@ a:hover { opacity: 0.8; text-decoration: underline; }
 }
 
 .brand { 
-  font-weight: 700; 
-  font-size: 1.25rem; 
+  font-weight: 700;
+  font-size: 1.25rem;
   font-style: italic;
   white-space: nowrap;
 }
@@ -88,13 +88,20 @@ a:hover { opacity: 0.8; text-decoration: underline; }
 }
 
 .link:hover { color: var(--text); background: #f1f5f9; }
+
+html {
+  overflow-y: scroll;
+}
+
 .link.active {
   background: none;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 500; /* Не робимо його набагато жирнішим за звичайний (500) */
   text-decoration: underline;
   text-underline-offset: 6px;
+  text-decoration-thickness: 2px; /* Підкреслення дасть акцент без зміни ширини */
 }
+
 
 .lang-btn {
   background: white;
@@ -187,14 +194,24 @@ h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height
 .item {
   border-bottom: 1px solid var(--stroke);
   padding: 16px 0;
+
+  /* Цей рядок робить магію плавності */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Додаємо прозору межу заздалегідь, щоб текст не "стрибав" при появі синьої лінії */
+  border-left: 3px solid transparent;
 }
 .item:last-child { border-bottom: none; }
 .item b { font-size: 1.1rem; display: block; }
 .meta { color: var(--muted); font-size: 0.9rem; margin-top: 8px; font-family: var(--font-mono); }
 .item:hover {
-  padding-left: 8px;
-  border-left: 2px solid var(--accent);
+  
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
   background: rgba(37, 99, 235, 0.02);
+
+  /* Можна додати легке підсвічування тексту */
+  color: var(--text);
 }
 
 .kv .row { 
